@@ -1,0 +1,27 @@
+[general]
+import = [
+"~/.config/alacritty/themes/themes/gruvbox_dark.toml"
+]
+live_config_reload = true
+
+[window]
+opacity = 0.9
+dynamic_padding = true
+decorations = "None"
+padding = { x = 2, y = 2 }
+blur = true
+
+[font]
+normal = {family = "MesloLGS NF", style = "Regular"}
+size = 14.00
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+bindings = [
+{ mouse = "Right", mods = "Control", action = "Paste" },
+]
+hide_when_typing = true
+
+
