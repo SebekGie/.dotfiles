@@ -2,7 +2,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.wrap = false 
+vim.opt.wrap = true
+vim.opt.linebreak = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -39,7 +40,8 @@ vim.keymap.set("n", "<C-Right>", "<C-w>>")
 vim.keymap.set("n", "<C-Up>", "<C-w>+")
 vim.keymap.set("n", "<C-Down>", "<C-w>-")
 
-
-
+-- Breaklines jumps]
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
 
 
