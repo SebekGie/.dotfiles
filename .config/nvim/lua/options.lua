@@ -35,13 +35,16 @@ vim.keymap.set("n", "<leader>e", "<CMD>Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>r", "<CMD>Neotree focus<CR>")
 
 -- Resize Windows
-vim.keymap.set("n", "<C-Left>", "<C-w><") 
+vim.keymap.set("n", "<C-Left>", "<C-w><")
 vim.keymap.set("n", "<C-Right>", "<C-w>>")
 vim.keymap.set("n", "<C-Up>", "<C-w>+")
 vim.keymap.set("n", "<C-Down>", "<C-w>-")
 
--- Breaklines jumps]
-vim.keymap.set("n", "j", "gj")
-vim.keymap.set("n", "k", "gk")
-
+-- Breaklines jumps
+vim.keymap.set({ "n", "x" }, "j", function()
+	return vim.v.count > 0 and "j" or "gj"
+end, { noremap = true, expr = true })
+vim.keymap.set({ "n", "x" }, "k", function()
+	return vim.v.count > 0 and "k" or "gk"
+end, { noremap = true, expr = true })
 
