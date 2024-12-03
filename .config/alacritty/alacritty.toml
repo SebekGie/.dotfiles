@@ -5,14 +5,14 @@ import = [
 live_config_reload = true
 
 [window]
-opacity = 0.9
+opacity = 0.85
 dynamic_padding = true
 decorations = "None"
 padding = { x = 2, y = 2 }
-blur = true
+blur = false 
 
 [font]
-normal = {family = "MesloLGS NF", style = "Regular"}
+normal = {family = "Hack Nerd Font", style = "Regular"}
 size = 14.00
 
 [selection]
