@@ -11,6 +11,7 @@ $haskell\
 $rust\
 $ruby\
 $package\
+$c\
 $line_break\
 $character""" 
 
@@ -34,6 +35,7 @@ truncate_to_repo = false
 'Obrazy' = ' '
 'Wiedza' = '󱓷 '
 'Coding' = ' '
+'notes' = '󰠮'
 
 [git_branch]
 style = 'fg:aqua'
@@ -55,30 +57,44 @@ pyenv_version_name = true
 pyenv_prefix = ''
 
 [lua]
+style = 'blue'
 symbol = ' '
+format = '[$symbol($version )]($style)'
 
 [nodejs]
 style = 'blue'
 symbol = ' '
+format = '[$symbol($version )]($style)'
 
 [golang]
 style = 'blue'
 symbol = ' '
+format = '[$symbol($version )]($style)'
 
 [haskell]
 style = 'blue'
 symbol = ' '
+format = '[$symbol($version )]($style)' 
 
 [rust]
 style = 'orange'
 symbol = ' '
+format = '[$symbol($version )]($style)' 
 
 [ruby]
 style = 'blue'
 symbol = ' '
+format = '[$symbol($version )]($style)' 
 
 [package]
+style = 'blue'
 symbol = '󰏗 '
+format = '[$symbol$version]($style) '
+
+[c]
+style = 'blue'
+symbol = ''
+format = '[$symbol$version]($style) '
 
 [palettes.gruvbox]
 gray='#928374'
