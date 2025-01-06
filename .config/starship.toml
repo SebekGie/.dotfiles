@@ -19,7 +19,9 @@ add_newline = false
 palette = 'gruvbox'
 
 [character]
-vimcmd_symbol = '[](blue)'
+vimcmd_symbol = '[](purple)'
+success_symbol = '[](bold aqua)'
+error_symbol = '[](bold red)'
 
 [directory]
 style = 'bold fg:blue'
@@ -27,15 +29,6 @@ format = '[$path ]($style)'
 truncation_length = 3
 truncation_symbol = '…/'
 truncate_to_repo = false
-
-[directory.substitutions]
-'Dokumenty' = '󰈙'
-'Pobrane' = ' '
-'Muzyka' = ' '
-'Obrazy' = ' '
-'Wiedza' = '󱓷 '
-'Coding' = ' '
-'notes' = '󰠮'
 
 [git_branch]
 style = 'fg:aqua'
@@ -94,7 +87,7 @@ format = '[$symbol$version]($style) '
 [c]
 style = 'blue'
 symbol = ''
-format = '[$symbol$version]($style) '
+format = '[$symbol $version]($style) '
 
 [palettes.gruvbox]
 gray='#928374'
