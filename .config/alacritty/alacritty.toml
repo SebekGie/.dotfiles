@@ -10,6 +10,7 @@ dynamic_padding = true
 decorations = "None"
 padding = { x = 2, y = 2 }
 blur = true 
+startup_mode = "Maximized"
 
 [font]
 normal = {family = "Hack Nerd Font", style = "Regular"}
