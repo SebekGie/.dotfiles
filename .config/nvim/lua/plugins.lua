@@ -122,6 +122,19 @@ require("lazy").setup({
       },
     },
 
+    {
+      'numToStr/Comment.nvim',
+      opts = {
+        -- comment with gcc(current line) or gbc (blockwise)
+    },
+  },
+    {
+    "hachy/cmdpalette.nvim",
+    config = function()
+      require("cmdpalette").setup()
+    end,
+  },
+
 })
 
 

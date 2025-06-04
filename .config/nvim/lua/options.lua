@@ -48,3 +48,5 @@ vim.keymap.set({ "n", "x" }, "k", function()
 	return vim.v.count > 0 and "k" or "gk"
 end, { noremap = true, expr = true })
 
+-- Cmdpalette
+vim.keymap.set("n", ":", "<Plug>(cmdpalette)")
