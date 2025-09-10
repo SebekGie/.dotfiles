@@ -134,7 +134,7 @@ require("lazy").setup({
       require("cmdpalette").setup()
     end,
   },
-
+  
 })
 
 
