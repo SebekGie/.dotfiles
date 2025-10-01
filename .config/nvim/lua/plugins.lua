@@ -122,12 +122,6 @@ require("lazy").setup({
       },
     },
 
-    {
-      'numToStr/Comment.nvim',
-      opts = {
-        -- comment with gcc(current line) or gbc (blockwise)
-    },
-  },
 
   {
     'MeanderingProgrammer/render-markdown.nvim',
@@ -136,7 +130,9 @@ require("lazy").setup({
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
-    opts = {},
+    opts = {
+        latex = { enabled = false}
+    },
   },
   -- Lua
   {
@@ -156,6 +152,22 @@ require("lazy").setup({
     -- refer to the configuration section below
     }
   },
+{
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- add any options here
+  },
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    }
+},
+
 })
 
 
