@@ -40,11 +40,6 @@ vim.keymap.set("n", "<C-Right>", "<C-w>>")
 vim.keymap.set("n", "<C-Up>", "<C-w>+")
 vim.keymap.set("n", "<C-Down>", "<C-w>-")
 
--- Markdown preview
-vim.keymap.set("n", "<leader>mp", "<CMD>MarkdownPreview<CR>", { desc = "Open Markdown Preview" })
-vim.keymap.set("n", "<leader>mt", "<CMD>MarkdownPreviewToggle<CR>", { desc = "Toggle Markdown Preview" })
-vim.keymap.set("n", "<leader>ms", "<CMD>MarkdownPreviewStop<CR>", { desc = "Stop Markdown Preview" })
-
 -- Breaklines jumps
 vim.keymap.set({ "n", "x" }, "j", function()
 	return vim.v.count > 0 and "j" or "gj"
