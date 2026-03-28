@@ -1,0 +1,110 @@
+format = """
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$python\
+$lua\
+$nodejs\
+$golang\
+$haskell\
+$rust\
+$ruby\
+$package\
+$c\
+$line_break\
+$character""" 
+
+add_newline = false
+palette = 'gruvbox'
+
+[character]
+vimcmd_symbol = '[](purple)'
+success_symbol = '[](bold aqua)'
+error_symbol = '[](bold red)'
+
+[directory]
+style = 'bold fg:blue'
+format = '[$path ]($style)'
+truncation_length = 3
+truncation_symbol = '…/'
+truncate_to_repo = false
+
+[git_branch]
+style = 'fg:aqua'
+symbol = ' '
+format = '[on](white) [$symbol$branch ]($style)'
+
+[git_status]
+style = 'fg:aqua'
+format = '([$all_status$ahead_behind]($style) )'
+
+[fill]
+symbol = ' '
+
+[python]
+style = 'blue'
+symbol = ' '
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = true
+pyenv_prefix = ''
+
+[lua]
+style = 'blue'
+symbol = ' '
+format = '[$symbol($version )]($style)'
+
+[nodejs]
+style = 'blue'
+symbol = ' '
+format = '[$symbol($version )]($style)'
+
+[golang]
+style = 'blue'
+symbol = ' '
+format = '[$symbol($version )]($style)'
+
+[haskell]
+style = 'blue'
+symbol = ' '
+format = '[$symbol($version )]($style)' 
+
+[rust]
+style = 'orange'
+symbol = ' '
+format = '[$symbol($version )]($style)' 
+
+[ruby]
+style = 'blue'
+symbol = ' '
+format = '[$symbol($version )]($style)' 
+
+[package]
+style = 'blue'
+symbol = '󰏗 '
+format = '[$symbol$version]($style) '
+
+[c]
+style = 'yellow'
+symbol = ''
+format = '[$symbol $version]($style) '
+
+[palettes.gruvbox]
+gray='#928374'
+red='#fb4934'
+green='#b8bb26'
+yellow='#fabd2f'
+blue='#83a598'
+purple='#d3869b'
+aqua='#8ec07c'
+orange='#fe8019'
+black='#1d2021'
+white='#ebdbb2'
+
+
+
+
+
+
+
+
