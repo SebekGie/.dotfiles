@@ -1,4 +1,3 @@
--- ========================================================================== --
 -- 1. OPCJE
 -- ========================================================================== --
 vim.opt.number = true
@@ -17,6 +16,7 @@ vim.opt.virtualedit = "block"
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
+
 
 -- Key Maps
 vim.g.maplocalleader = ","
@@ -47,7 +47,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
-    error("Błąd klonowania lazy.nvim:\n" .. out)
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
   end
 end
 vim.opt.rtp:prepend(lazypath)
@@ -66,20 +72,6 @@ require("lazy").setup({
                 transparent_mode = true,
             })
             vim.cmd("colorscheme gruvbox")
-        end,
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "main",
-        build = ":TSUpdate",
-        config = function()
-            require("nvim-treesitter.config").setup({
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "markdown", "markdown_inline", "regex", "bash" },
-                auto_install = true,
-                highlight = { enable = true, additional_vim_regex_highlighting = false },
-                indent = { enable = true },
-            })
         end,
     },
 
@@ -130,25 +122,9 @@ require("lazy").setup({
             require("colorizer").setup({
                 filetypes = { "*" },
                 user_default_options = {
-                    RGB = true,
-                    RRGGBB = true,
-                    names = true,
-                    RRGGBBAA = true,
-                    AARRGGBB = true,
-                    rgb_fn = true,
-                    hsl_fn = true,
-                    css = true,
-                    css_fn = true,
                     mode = "background",
                     tailwind = true,
-                    sass = { enable = true, parsers = { "css" } },
                     virtualtext = "■",
-                },
-                buftypes = { 
-                    "*",
-                    "!prompt",
-                    "!popup",
-                    "!telescope",
                 },
             })
         end,
@@ -160,11 +136,6 @@ require("lazy").setup({
         config = function()
             require("nvim-autopairs").setup({
                 check_ts = true,
-                ts_config = {
-                    lua = { "string" },
-                    javascript = { "template_string" },
-                    java = false,
-                },
             })
         end,
     },
@@ -174,26 +145,16 @@ require("lazy").setup({
       "folke/which-key.nvim",
       dependencies = { 'echasnovski/mini.nvim', version = false },
       event = "VeryLazy",
-      keys = {
-        {
-          "<leader>?",
-          function()
-            require("which-key").show({ global = false })
-          end,
-          desc = "Buffer Local Keymaps (which-key)",
-        },
-      },
+      config = function()
+        require("which-key").setup()
+      end,
     },
 
     -- Tryby edycji
     {
         "folke/zen-mode.nvim",
         opts = {
-            window = {
-                backdrop = 0.95,
-                width = 120,
-                height = 1,
-            },
+            window = { backdrop = 0.95, width = 120, height = 1 },
         }
     },
     {
@@ -201,34 +162,4 @@ require("lazy").setup({
         opts = {}
     },
 
-    -- Snacks (Dashboard)
-    {
-        "folke/snacks.nvim",
-        priority = 1000,
-        lazy = false,
-        opts = {
-            bigfile = { enabled = true },
-            dashboard = { enabled = true },
-            explorer = { enabled = true },
-            indent = { enabled = false },
-            input = { enabled = true },
-            picker = { enabled = true },
-            notifier = { enabled = true },
-            quickfile = { enabled = true },
-            statuscolumn = { enabled = true },
-            words = { enabled = true },
-            styles = {
-                notification = {
-                    wo = { wrap = true }
-                }
-            }
-        },
-    },
-
-    -- Markdown Preview
-    {
-        "MeanderingProgrammer/render-markdown.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-        opts = {},
-    },
 })
