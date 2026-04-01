@@ -1,1 +1,7 @@
 .config/alacritty/themes
+
+# Doom Emacs - ignoruj pliki generowane automatycznie
+.config/doom/.local/
+.config/doom/pcache/
+.config/doom/straight/
+.config/doom/server/
