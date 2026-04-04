@@ -18,7 +18,7 @@
 (setq org-roam-directory (file-truename "~/org/roam"))
 
 ;; Transparency
-(add-to-list 'default-frame-alist '(alpha-background . 90))
+(add-to-list 'default-frame-alist '(alpha-background . 80))
 
 ;; Map Esc to jj
 (setq evil-escape-key-sequence "jj")
