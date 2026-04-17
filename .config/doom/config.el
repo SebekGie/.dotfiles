@@ -37,3 +37,9 @@
 
 ;; Baner
 (setq fancy-splash-image "/home/sebek/Obrazy/trancendent-gnu-small.png")
+
+;; Babel w org
+(after! org
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((C . t))))
