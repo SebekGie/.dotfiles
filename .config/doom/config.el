@@ -44,17 +44,3 @@
    'org-babel-load-languages
    '((C . t))))
 
-;; IRC
-(after! circe
-  (setq circe-server-configs
-        '(("Libera.Chat"
-           :host "irc.libera.chat"
-           :port 6697
-           :tls t
-           :nick "theodor_run")
-          ("OverTheWire"
-           :host "ircs.overthewire.org"
-           :port 6697
-           :tls t
-           :nick "theodor_run"
-           :channels ("#wargames"))))
