@@ -1,7 +1,4 @@
--- ==========================================================================
--- 1. OPCJE NEOVIMA
--- ==========================================================================
-
+-- OPCJE NEOVIMA
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.splitbelow = true
@@ -20,56 +17,37 @@ vim.opt.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
+-- SKROTY KLAWISZOWE
 -- LSP: nawigacja i pomoc
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP: dokumentacja" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: definicja" })
 vim.keymap.set("n", "grr", vim.lsp.buf.references, { desc = "LSP: użycia symbolu" })
 vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "LSP: zmień nazwę" })
 vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "LSP: akcje kodu" })
--- ==========================================================================
--- 2. SKROTY KLAWISZOWE
--- ==========================================================================
-
+-- Leader Key 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-
 -- Powrot do normal mode
 vim.keymap.set("i", "jj", "<Esc>", { silent = true })
-
 -- Nawigacja po oknach
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
-
 -- Zarzadzanie oknami
 vim.keymap.set("n", "<leader>b", "<CMD>vsplit<CR>")
 vim.keymap.set("n", "<leader>d", "<CMD>split<CR>")
 
--- Neo-tree
-vim.keymap.set("n", "<leader>e", "<CMD>Neotree toggle<CR>")
-vim.keymap.set("n", "<leader>r", "<CMD>Neotree focus<CR>")
-
--- ==========================================================================
--- 3. WTYCZKI
+-- WTYCZKI
 -- vim.pack pobiera i aktualizuje wtyczki
--- ==========================================================================
-
 vim.pack.add({
-    -- Zaleznosci Neo-tree i innych wtyczek
+    -- Zaleznosci wtyczek
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/nvim-tree/nvim-web-devicons",
-    "https://github.com/MunifTanjim/nui.nvim",
 
     -- Wyglad
     "https://github.com/ellisonleao/gruvbox.nvim",
     "https://github.com/nvim-lualine/lualine.nvim",
-
-    -- Menedzer plikow
-    {
-        src = "https://github.com/nvim-neo-tree/neo-tree.nvim",
-        version = "v3.x",
-    },
 
     -- Wyszukiwanie plikow i tekstu
     {
@@ -81,14 +59,9 @@ vim.pack.add({
     "https://github.com/NvChad/nvim-colorizer.lua",
     "https://github.com/windwp/nvim-autopairs",
     "https://github.com/folke/which-key.nvim",
-    "https://github.com/folke/zen-mode.nvim",
-    "https://github.com/folke/twilight.nvim",
 
     -- Markdown: czytelne renderowanie dokumentów
     "https://github.com/MeanderingProgrammer/render-markdown.nvim",
-
-        -- Markdown: nawigacja, TOC i listy
-    "https://github.com/tadmccorkle/markdown.nvim",
 
     -- Mason: instalacja narzedzi i serwerow
     "https://github.com/mason-org/mason.nvim",
@@ -103,10 +76,7 @@ vim.pack.add({
     "https://github.com/hrsh7th/cmp-buffer",
 }, { load = true })
 
--- ==========================================================================
--- 4. MOTYW I INTERFEJS
--- ==========================================================================
-
+-- MOTYW I INTERFEJS
 require("gruvbox").setup({
     terminal_colors = true,
     transparent_mode = true,
@@ -116,28 +86,14 @@ vim.cmd.colorscheme("gruvbox")
 
 require("lualine").setup()
 
-require("neo-tree").setup({
-    filesystem = {
-        filtered_items = {
-            visible = true,
-        },
-    },
-})
-
--- ==========================================================================
--- 5. TELESCOPE: WYSZUKIWANIE
--- ==========================================================================
-
+-- TELESCOPE: WYSZUKIWANIE
 local builtin = require("telescope.builtin")
 
 vim.keymap.set("n", "<leader>ff", builtin.find_files)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep)
 vim.keymap.set("n", "<leader>fb", builtin.buffers)
 
--- ==========================================================================
--- 6. NARZEDZIA EDYCYJNE
--- ==========================================================================
-
+-- NARZEDZIA EDYCYJNE
 require("colorizer").setup({
     filetypes = { "*" },
     user_default_options = {
@@ -153,21 +109,7 @@ require("nvim-autopairs").setup()
 -- Podpowiedzi skrotow
 require("which-key").setup()
 
--- Tryb skupienia
-require("zen-mode").setup({
-    window = {
-        backdrop = 0.95,
-        width = 120,
-        height = 1,
-    },
-})
-
-require("twilight").setup({})
-
--- ==========================================================================
--- 7. MASON: INSTALACJA SERWEROW LSP
--- ==========================================================================
-
+-- MASON: INSTALACJA SERWEROW LSP
 require("mason").setup()
 
 require("mason-lspconfig").setup({
@@ -183,10 +125,7 @@ require("mason-lspconfig").setup({
     },
 })
 
--- ==========================================================================
--- 8. LSP: KONFIGURACJA SERWEROW
--- ==========================================================================
-
+-- LSP: KONFIGURACJA SERWEROW
 -- Informacje potrzebne LSP do wspolpracy z nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -225,10 +164,7 @@ vim.lsp.enable({
     "html",
     "taplo",
 })
--- ==========================================================================
--- 9. NVM-CMP: AUTOUZUPEŁNIANIE
--- ==========================================================================
-
+-- NVM-CMP: AUTOUZUPEŁNIANIE
 local cmp = require("cmp")
 
 cmp.setup({
@@ -251,11 +187,9 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "buffer" },
     }),
-
--- =========================================================================
--- MARKDOWN: RENDEROWANIE
--- =========================================================================
-require("render-markdown").setup({})
 })
+
+-- MARKDOWN: RENDEROWANIE
+require("render-markdown").setup({})
 
 
