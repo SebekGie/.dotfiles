@@ -1,5 +1,3 @@
-
-
 -- ==========================================================================
 -- 1. OPCJE NEOVIMA
 -- ==========================================================================
@@ -85,6 +83,12 @@ vim.pack.add({
     "https://github.com/folke/which-key.nvim",
     "https://github.com/folke/zen-mode.nvim",
     "https://github.com/folke/twilight.nvim",
+
+    -- Markdown: czytelne renderowanie dokumentów
+    "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+
+        -- Markdown: nawigacja, TOC i listy
+    "https://github.com/tadmccorkle/markdown.nvim",
 
     -- Mason: instalacja narzedzi i serwerow
     "https://github.com/mason-org/mason.nvim",
@@ -247,5 +251,11 @@ cmp.setup({
         { name = "nvim_lsp" },
         { name = "buffer" },
     }),
+
+-- =========================================================================
+-- MARKDOWN: RENDEROWANIE
+-- =========================================================================
+require("render-markdown").setup({})
 })
+
 
