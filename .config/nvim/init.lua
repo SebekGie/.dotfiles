@@ -16,6 +16,8 @@ vim.opt.inccommand = "split"
 vim.opt.ignorecase = true
 vim.opt.termguicolors = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.showmode = false
+vim.opt.showcmd = false
 
 -- SKROTY KLAWISZOWE
 -- LSP: nawigacja i pomoc
@@ -32,8 +34,7 @@ vim.keymap.set("i", "jj", "<Esc>", { silent = true })
 -- Nawigacja po oknach
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k") vim.keymap.set("n", "<C-j>", "<C-w>j")
 -- Zarzadzanie oknami
 vim.keymap.set("n", "<leader>b", "<CMD>vsplit<CR>")
 vim.keymap.set("n", "<leader>d", "<CMD>split<CR>")
@@ -62,6 +63,9 @@ vim.pack.add({
 
     -- Markdown: czytelne renderowanie dokumentów
     "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+
+    -- Tree-sitter:parsery skladni
+    "https://github.com/nvim-treesitter/nvim-treesitter",
 
     -- Mason: instalacja narzedzi i serwerow
     "https://github.com/mason-org/mason.nvim",
@@ -189,7 +193,15 @@ cmp.setup({
     }),
 })
 
+require("nvim-treesitter").setup({
+    install_dir = vim.fn.stdpath("data") .. "/site",
+
+})
 -- MARKDOWN: RENDEROWANIE
-require("render-markdown").setup({})
+require("render-markdown").setup({
+    yaml = {
+        enabled = true,
+    },
+})
 
 
