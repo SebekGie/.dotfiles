@@ -9,7 +9,8 @@ vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.softtabstop = 4
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = ""
+vim.opt.mouse = ""
 vim.opt.scrolloff = 5
 vim.opt.virtualedit = "block"
 vim.opt.inccommand = "split"
@@ -59,7 +60,6 @@ vim.pack.add({
     -- Narzedzia edycyjne
     "https://github.com/NvChad/nvim-colorizer.lua",
     "https://github.com/windwp/nvim-autopairs",
-    "https://github.com/folke/which-key.nvim",
 
     -- Markdown: czytelne renderowanie dokumentów
     "https://github.com/MeanderingProgrammer/render-markdown.nvim",
@@ -109,9 +109,6 @@ require("colorizer").setup({
 
 -- Automatyczne nawiasy
 require("nvim-autopairs").setup()
-
--- Podpowiedzi skrotow
-require("which-key").setup()
 
 -- MASON: INSTALACJA SERWEROW LSP
 require("mason").setup()
@@ -203,5 +200,3 @@ require("render-markdown").setup({
         enabled = true,
     },
 })
-
-
