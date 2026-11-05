@@ -19,6 +19,7 @@ vim.opt.termguicolors = true
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.showmode = false
 vim.opt.showcmd = false
+vim.opt.autoread = true
 
 -- SKROTY KLAWISZOWE
 -- LSP: nawigacja i pomoc
@@ -32,13 +33,18 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 -- Powrot do normal mode
 vim.keymap.set("i", "jj", "<Esc>", { silent = true })
--- Nawigacja po oknach
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
-vim.keymap.set("n", "<C-k>", "<C-w>k") vim.keymap.set("n", "<C-j>", "<C-w>j")
 -- Zarzadzanie oknami
 vim.keymap.set("n", "<leader>b", "<CMD>vsplit<CR>")
 vim.keymap.set("n", "<leader>d", "<CMD>split<CR>")
+
+vim.g.tpipeline_fillcentre = 0
+vim.g.tpipeline_restore = 1
+vim.g.tpipeline_embedopts = {
+    "status-left '#(cat #{socket_path}-\\#{session_id}-vimbridge)'",
+    "status-right '#(cat #{socket_path}-\\#{session_id}-vimbridge-R)'",
+    "status-justify absolute-centre",
+}
+
 
 -- WTYCZKI
 -- vim.pack pobiera i aktualizuje wtyczki
@@ -60,6 +66,10 @@ vim.pack.add({
     -- Narzedzia edycyjne
     "https://github.com/NvChad/nvim-colorizer.lua",
     "https://github.com/windwp/nvim-autopairs",
+
+    -- Nawigacja Neovim / tmux
+    "https://github.com/christoomey/vim-tmux-navigator",
+    "https://github.com/vimpostor/vim-tpipeline",
 
     -- Markdown: czytelne renderowanie dokumentów
     "https://github.com/MeanderingProgrammer/render-markdown.nvim",

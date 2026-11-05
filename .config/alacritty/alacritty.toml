@@ -10,7 +10,7 @@ dynamic_padding = true
 decorations = "None"
 padding = { x = 2, y = 2 }
 blur = true 
-startup_mode = "Maximized"
+startup_mode = "Windowed"
 
 [font]
 normal = {family = "JetBrainsMono Nerd Font", style = "Regular"}
